@@ -1,30 +1,66 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 
 function Navbar() {
+    const [isMenuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!isMenuOpen);
+    };
     return (
         <nav className="bg p-4">
             <div className="max-w-screen-xl mx-auto flex items-center justify-between">
                 <div className="flex items-center">
                     <a href="https://flowbite.com/" className="flex items-center">
                         <Image src="/fnotify-logo.png" width={34} height={6} className="h-8 mr-3 rounded" alt="Fnotify Logo" />
-                        <span className="text-2xl font-semibold text-white">Fnotify</span>
+                        <span className="text-2xl fnotify-title font-semibold text-white">Fnotify</span>
                     </a>
                 </div>
-                <div className="w-full md:w-1/2">
-                    <div className="relative">
-                        <input type="text" id="search-navbar" className="block search-input text-center w-full p-2 text-sm text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400" />
-                        <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                            <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path>
-                            </svg>
-                        </span>
-                    </div>
+
+                {/* Menu hamburger - visible pour les écrans plus petits */}
+                <div className="md:hidden">
+                    <button
+                        onClick={toggleMenu}
+                        className="text-white cursor-pointer"
+                    >
+                        <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M4 6h16M4 12h16M4 18h16"
+                            />
+                        </svg>
+                    </button>
                 </div>
+
+                {/* Boutons de connexion et d'inscription - visibles pour les écrans plus grands */}
                 <div className="hidden md:flex space-x-4">
-                    <button className="text-white bg-gray-500 hover:bg-gray-400 py-2 px-4 font-medium rounded-full">Se connecter</button>
-                    <button className="blue-btn text-white font-medium py-2 px-4 rounded-full">S'inscrire</button>
+                    <button className="text-white bg-gray-500 hover:bg-gray-400 py-2 px-4 font-medium rounded-full">
+                        Se connecter
+                    </button>
+                    <button className="blue-btn text-white font-medium py-2 px-4 rounded-full">
+                        S'inscrire
+                    </button>
+                </div>
+            </div>
+
+            {/* Menu déroulant - visible pour les écrans plus petits */}
+            <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
+                <div className="flex flex-col  mt-4">
+                    <button className="text-white bg-gray-500 hover:bg-gray-400 mt-2 py-2 px-4 font-medium rounded">
+                        Se connecter
+                    </button>
+                    <button className="blue-btn text-white font-medium py-2 mt-2 px-4 rounded">
+                        S'inscrire
+                    </button>
                 </div>
             </div>
         </nav>

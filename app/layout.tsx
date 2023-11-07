@@ -1,3 +1,4 @@
+'use client'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/Navbar'
@@ -6,7 +7,7 @@ import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
+ const metadata: Metadata = {
   title: 'Fortnite item alert',
   description: 'Get notified when your favorite item is available in the shop',
 }
@@ -19,12 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header>
+        <header id='header'>
           <Navbar></Navbar>
         </header>
-        <main className='relative overflox-hidden'>
-          {children}
-        </main>
+        {children}
         <Footer></Footer>
       </body>
     </html>
