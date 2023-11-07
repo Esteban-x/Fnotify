@@ -16,12 +16,23 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+body{
+background : #232529;
+}
+
+.bg{
+  background: #232529;
+}
+
+.search-input{
+  background: #4e505567;
+  color: white;
+}
+
+.blue-btn{
+  background-color: #2494D9;
+}
+
+.blue-btn:hover{
+  background-color: #77D9F7;
 }
